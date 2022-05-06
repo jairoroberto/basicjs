@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.cdnfonts.com/css/museo-sans-cyrl" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/gotham-rounded" rel="stylesheet">
+    <title>JS CSS and Tips</title>
+
+    <style>
+        body{
+            background-color: #f5f5f5;
+            font-family: 'Museo Sans Cyrl', Helvetica, sans-serif;
+            color:#333333;
+        }
+
+        .container{
+            max-width: 1200px;
+            margin:0 auto;
+            padding: 1.5rem;
+        }
+        .mb-1{
+            margin-bottom: 1rem;
+        }
+
+        .box{
+            width:400px;
+            height:250px;
+            background: #fff;
+            margin-top:30px;
+            padding: 15px 30px;
+            border-radius: 6px;
+            display: flex;
+            _flex-direction: column;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            transition: all 0.2s linear;
+            align-items: center;
+        }
+
+        p{
+            color:#665;
+            font-weight:300;
+            line-height: 1.4rem;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            font-weight: normal;
+            font-family: 'Gotham Rounded', sans-serif;
+            font-weight: 300;    
+            margin: 0;               
+        }
+
+        input{
+            border: 1px solid #ccc;
+            min-height: 2rem;
+            border-radius: 4px;
+            min-width: 260px;
+            padding: 0.2rem 0.5rem;
+            font-family: 'Museo Sans Cyrl', Helvetica, sans-serif;
+            outline: none;
+            font-size: 1.0rem;
+            transition: all 0.2s linear;
+        }
+
+        input[type=text]:focus{
+           border:1px solid #9b9a9a;
+           transition: all 0.2s linear;
+        }
+
+        .gotham-rounded{
+            font-family: 'Gotham Rounded', sans-serif;
+            font-weight: 350;
+        }
+
+        .btn-clicar{
+            background: #21e86d;
+            border:none;
+            padding: 15px 30px;
+            color:#0c5e1c;
+            border-radius:3px;
+            cursor:pointer;
+            transition:all 0.2s linear;
+            max-width: 46%;
+        }
+
+        .btn-clicar:hover{
+            background: #16c559;
+            color:#fff;
+            transition: all 0.2s linear;
+            cursor:pointer
+        }
+
+        .btn-reset{
+            background: #fff;
+            border:none;
+            padding: 15px 30px;
+            color:#666;
+            border-radius:3px;
+            cursor:pointer;
+            border:1px solid #ddd;
+            max-width: 46%;
+        }
+        .btn-reset:hover{
+            border:1px solid #0c5e1c;
+            color:#0c5e1c;
+        }
+
+        /* CSS == CASCATING SHEET STYLE */
+        /*HTML == Hyper TEXT MARKUP LANGUAGE */
+        
+    </style>
+
+
+</head>
+<body>
+
+    <section class="container">
+
+        <h1 class="mb-1">Título da Página</h1>
+        <label for="">Nome: </label>
+        <input type="text" placeholder="Escreva alguma coisa ...">
+    
+        <div class="box mb-1">
+            <h2>Título do BOX</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro beatae est id dolore, maiores illum vel pariatur blanditiis assumenda aperiam?</p>
+            <button class="btn-clicar gotham-rounded">Clique Aqui</button>
+            <button class="btn-reset gotham-rounded">Reset</button>
+        </div>
+
+        <div class="box1">
+            <h2>Título do BOX 2</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro beatae est id dolore, maiores illum vel pariatur blanditiis assumenda aperiam?</p>
+        </div>
+
+    </section>
+
+
+    <script>
+
+        // Começando com Javascript
+
+        var caixa = document.querySelector('.box');
+        var botaoMudar = document.querySelector('.btn-clicar');
+        var botaoReset = document.querySelector('.btn-reset');
+        var titulo = document.querySelector('h2');
+
+        function ChangeApp(){
+            caixa.style.background = '#f9ebba';
+            titulo.innerHTML = 'Alteramos aqui com outro texto';
+        }
+
+        function ResetApp(){
+            caixa.style.background = '#fff';
+            titulo.innerHTML = 'Titulo do BOX';
+        }
+
+        botaoMudar.addEventListener('click', ChangeApp);
+        botaoReset.addEventListener('click', ResetApp);
+
+        //forEach
+        const arr1 = ['Facebook', 'Twitter', 'Instagram', 'Linkedin'];
+        const arr2 = ['Ford', 'Honda', 'Fiat', 'VW'];
+
+        // Atribuindo do HTML
+        box1 = document.querySelector('.box1');
+        let text = '';
+    
+        arr1.forEach(RedesSociais);
+
+        function RedesSociais(item, index) {
+            //console.log(`[${index}] = ${item}`);
+            text += `[${index}] = ${item} ` + "<br>";       
+        }
+     
+        box1.innerHTML = text;  
+
+        // ARROW FUNCTION
+        hello = function() {
+            return "Hello World!";
+        }
+
+
+
+
+    </script>
+
+
+</body>
+
+
+</html>
