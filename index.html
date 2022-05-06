@@ -23,6 +23,9 @@
         .mb-1{
             margin-bottom: 1rem;
         }
+        .mb-2{
+            margin-bottom: 2rem;
+        }
 
         .box{
             width:400px;
@@ -37,6 +40,25 @@
             flex-wrap: wrap;
             transition: all 0.2s linear;
             align-items: center;
+        }
+
+        .box1{
+            background: #fff;
+            padding: 15px 30px;
+            border-radius: 4px 4px 0 0;
+            border-bottom:4px solid #69a2db;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .box1 b{
+            font-weight: 400;
+            color:#16c559;
+            padding: 0.5rem;
+            display: inline-block;
+            background: #000;
+            border-radius: 6px;
         }
 
         p{
@@ -107,6 +129,27 @@
             color:#0c5e1c;
         }
 
+        .result{
+            border-radius: 5px;
+            color:#fff;
+            padding: 2rem;
+            margin-top: 30px;
+            background: linear-gradient(to right, #16c559, #319959);
+            position: relative;
+            line-height: 1.6rem;
+        }
+
+        .result:before{
+            content: '';
+            border:1px dashed #077732;
+            top:10px;
+            left:10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            position: absolute;
+            border-radius: 3px;
+        }
+
         /* CSS == CASCATING SHEET STYLE */
         /*HTML == Hyper TEXT MARKUP LANGUAGE */
         
@@ -122,7 +165,7 @@
         <label for="">Nome: </label>
         <input type="text" placeholder="Escreva alguma coisa ...">
     
-        <div class="box mb-1">
+        <div class="box mb-2">
             <h2>Título do BOX</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro beatae est id dolore, maiores illum vel pariatur blanditiis assumenda aperiam?</p>
             <button class="btn-clicar gotham-rounded">Clique Aqui</button>
@@ -132,6 +175,10 @@
         <div class="box1">
             <h2>Título do BOX 2</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro beatae est id dolore, maiores illum vel pariatur blanditiis assumenda aperiam?</p>
+        </div>
+
+        <div class="result mb-2 gotham-rounded">
+            Arrow Function
         </div>
 
     </section>
@@ -163,7 +210,7 @@
         const arr1 = ['Facebook', 'Twitter', 'Instagram', 'Linkedin'];
         const arr2 = ['Ford', 'Honda', 'Fiat', 'VW'];
 
-        // Atribuindo do HTML
+        // Atribuindo no HTML
         box1 = document.querySelector('.box1');
         let text = '';
     
@@ -171,21 +218,54 @@
 
         function RedesSociais(item, index) {
             //console.log(`[${index}] = ${item}`);
-            text += `[${index}] = ${item} ` + "<br>";       
+            text += "<span>" + `<b>[${index}]</b> = ${item} ` + "</span>";       
         }
      
         box1.innerHTML = text;  
 
-        // ARROW FUNCTION
-        hello = function() {
-            return "Hello World!";
+        // ARROW FUNCTION STEPS é uma função anônima(Sem nome)
+
+        const result = document.querySelector('.result');
+        
+        // Versão 01
+        function sum1(a, b) {
+            return a + b;
         }
 
+        // Versão 02
+        const sum2 = function(a, b) {
+            return a + b;
+        }
+
+        //Versão 03
+        const sum3 = (a, b) => {
+            return a + b;
+        }
+
+        //Versão 04
+        const sum4 = (a, b) => a + b;
+
+        // Resultados
+        console.log(sum1(3, 2));
+        console.log(sum2(6, 7));
+        console.log(sum3(1, 4));
+        console.log(sum4(10, 6));
+
+        const community = () => 'Hello World';
+        console.log(community());
+
+        //>>> const double = (num) => num * 2;
+        //pode ser escrito assim também
+        const double = num => num * 2;
+        console.log(double(5));
+
+        result.innerText = "O resultado é " + sum4(1224, 43432) + " \n Sem Parâmetro ::  " + community() + '\n O Dobro de 5 é ' + double(5);
 
 
 
     </script>
 
+    
 
 </body>
 
