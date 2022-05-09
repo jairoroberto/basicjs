@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container mx-auto p-5">
+        <h1 class="text-2xl py-3 mb-8 text-blue-500">Simulando XMLHttpRequest</h1>
+        <button id="btn" class="bg-green-500 p-3 px-10 rounded text-white hover:bg-green-700 transition-all">Enviar</button>
+    </div>
+    
+
+
+
+    <script>
+        function reqListener() {
+            console.log(this.responseText);
+        };
+
+        var oReq = new XMLHttpRequest();
+        oReq.onload = reqListener;
+        oReq.open("get", "file.txt", true);
+        oReq.send();
+
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', reqListener );
+
+
+    </script>
+
+</body>
+
+</html>
