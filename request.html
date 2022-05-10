@@ -6,33 +6,134 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Document</title>
+    <style>
+        :root{
+            --color-action:#6a30c8;
+            --color-action-hover:#471a90;
+        }
+
+        .progress-bar{
+            background:none;
+            width: 300px;
+            height: 10px;
+            border-radius: 2px;
+            position: relative;
+            border:1px solid #ddd;
+            transition: all 0.2s linear;
+        }
+
+        .progress-bar::after{
+            content: "";
+            position: absolute;
+            width: 0px;
+            height: 10px;
+            transform: scaleX(0);
+        }
+
+        .progress-bar-100{
+            border-radius: 3px;
+            transition: all 0.2s linear;
+            position: relative;
+            transform: scaleX(1);
+            width: 300px;
+            height: 10px;
+            background:var(--color-action);
+        }
+
+        .progress-bar-100::after{
+            content: "";
+            position: absolute;
+            transform: scaleX(1);
+            background:var(--color-action);
+            width: 300px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
+        /* button custom */
+
+        .button-custom{
+            position: relative;
+            background: none;
+            border: 1px solid #6a30c8;
+            transition: color 200ms;
+            color: #6a30c8;
+            padding: 0.65rem 2.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .button-custom:is(:hover,:focus){
+           color:#ffffff
+        }
+
+        .button-custom::after{
+            position: absolute;
+            content: '';
+            inset: 0;
+            z-index: -1;
+            background-color: var(--color-action-hover);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 200ms;
+        }
+
+        .button-custom:is(:hover,:focus)::after{
+            transform: scaleX(1);
+            text-decoration: none;
+        }
+
+    </style>
+
+    <title>Ajax ASync</title>
 </head>
 
 <body>
 
     <div class="container mx-auto p-5">
-        <h1 class="text-2xl py-3 mb-8 text-blue-500">Simulando XMLHttpRequest</h1>
-        <button id="btn" class="bg-green-500 p-3 px-10 rounded text-white hover:bg-green-700 transition-all">Enviar</button>
+        <h1 class="font-light text-2xl py-3 mb-8 text-blue-500">Simulando <span class="font-bold">XMLHttpRequest</span></h1>
+        <button id="btn" class="button-custom shadow-md">Enviar</button> <a href="#" class="ml-20 text-blue-500">Reset</a>
+
+        <div class="progress-bar mt-5">
+            <span></span>
+        </div>
+
     </div>
-    
 
 
 
     <script>
+
+        const bar = document.querySelector('.progress-bar');
+
         function reqListener() {
             console.log(this.responseText);
         };
 
         var oReq = new XMLHttpRequest();
+       
         oReq.onload = reqListener;
-        oReq.open("get", "file.txt", true);
-        oReq.send();
 
         const btn = document.getElementById('btn');
-        btn.addEventListener('click', reqListener );
+        btn.addEventListener('click', () => {
+          
+           a = oReq.open("get", "file.txt", true);
+           oReq.send();
+           console.log(a)
+
+           bar.classList.add('progress-bar-100');
+        }
+        )
+
+        // Reset
+        const reset = document.querySelector('a');
+        reset.addEventListener('click',function(e) {
+            e.preventDefault();
+            bar.classList.remove('progress-bar-100');
+        }
+        );
+        
 
 
     </script>
